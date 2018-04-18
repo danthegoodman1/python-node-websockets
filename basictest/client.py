@@ -19,6 +19,7 @@ async def test2(uri):
 async def longwait(uri):
     async with websockets.connect(uri) as ws:
         while True:
+            # going to have to use if statements and JSON objects to determine what kind of event because I can't make custom events with this client library ugh
             sleep(2)
             await ws.send("Hello world!")
             greeting = await ws.recv()
