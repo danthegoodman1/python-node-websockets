@@ -12,7 +12,7 @@ wss.on('connection', function connection(ws) {
       ws.send(JSON.stringify({'desc': "helloooooooo"}))
   });
   setTimeout(function(){
-    ws.emit(testT, "hello!");
+    ws.send("hello!");
     console.log("sent hello!");
   }, 5000);
 });
