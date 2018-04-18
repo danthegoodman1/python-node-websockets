@@ -20,8 +20,10 @@ async def longwait(uri):
     async with websockets.connect(uri) as ws:
         while True:
             sleep(2)
+            await ws.send("Hello world!")
             greeting = await ws.recv()
-            print("greeting " + greeting)
+            greeting = json.loads(greeting)
+            print("greeting " + greeting['desc'])
         print("Outside the loop")
 
 # asyncio.get_event_loop().run_until_complete(
